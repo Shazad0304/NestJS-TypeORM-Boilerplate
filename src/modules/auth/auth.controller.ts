@@ -1,5 +1,5 @@
 import { Controller, Body, Post, UseGuards, HttpStatus } from '@nestjs/common';
-import { ApiResponse, ApiUseTags } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 
 import { AuthService } from './auth.service';
@@ -8,7 +8,7 @@ import { RegisterPayload } from './register.payload';
 import { UsersService } from '../user/user.service';
 
 @Controller('auth')
-@ApiUseTags('authentication')
+@ApiTags('authentication')
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
@@ -33,6 +33,7 @@ export class AuthController {
   @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Bad Request' })
   @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
   async register(@Body() payload: RegisterPayload): Promise<any> {
+    console.log("me chala");
     const user = await this.userService.create(payload);
     return await this.authService.generateToken(user);
   }

@@ -41,15 +41,18 @@
     "@nestjs/core": "^6.10.14",
     "@nestjs/jwt": "^6.1.1",
     "@nestjs/passport": "^6.1.1",
+    "@nestjs/platform-express": "6.10.14",
     "@nestjs/typeorm": "^6.2.0",
     "crypto": "^1.0.1",
     "helmet": "^3.21.2",
     "mongodb": "^3.4.1",
+    "mysql": "^2.18.1",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "pg": "^7.17.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.4",
+    "swagger-ui-express": "3.0.10",
     "typeorm": "^0.2.22"
   },
   "devDependencies": {
