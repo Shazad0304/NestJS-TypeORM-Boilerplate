@@ -20,9 +20,7 @@ export class User {
   email!: string;
 
   @Column({
-    name: 'password',
-    length: 255,
-    transformer: new PasswordTransformer(),
+    name: 'password'
   })
   @Exclude()
   password!: string;
