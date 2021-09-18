@@ -1,7 +1,7 @@
 import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { createHmac } from 'crypto';
+import * as crypto from 'crypto';
 
 import { Roles } from '../common/decorators/roles.decorator';
 import { User, UserFillableFields } from './user.entity';
@@ -28,7 +28,8 @@ export class UsersService {
   }
 
   async getByEmailAndPass(email: string, password: string) {
-    const passHash = createHmac('sha256', password).digest('hex');
+    const passHash = crypto.createHmac('sha256', password).digest('hex');
+    console.log("userpass",passHash);
     return await this.userRepository.findOne({ email, password: passHash });
     // return await this.userRepository
     //   .createQueryBuilder('users')
@@ -47,7 +48,9 @@ export class UsersService {
       );
     }
 
-    const newUser = this.userRepository.create(payload);
+    const passHash = crypto.createHmac('sha256', payload.password).digest('hex');
+    const newPayload = {...payload,password : passHash}
+    const newUser = this.userRepository.create(newPayload);
     return await this.userRepository.save(newUser);
   }
 }
