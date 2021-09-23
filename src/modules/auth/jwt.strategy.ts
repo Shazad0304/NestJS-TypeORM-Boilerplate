@@ -7,11 +7,13 @@ import { AuthService } from './auth.service';
 import { ObjectID } from 'typeorm/driver/mongodb/typings';
 import { LoginPayload } from './login.payload';
 import { JwtPayload } from './jwt.payload';
+import { UsersService } from 'modules/user/user.service';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class JwtStrategy extends PassportStrategy(Strategy,'jwt') {
   constructor(
     private readonly authService: AuthService,
+    private readonly userService : UsersService,
     private readonly configService: ConfigService,
   ) {
     super({
@@ -31,10 +33,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   //   }
   //   return {};
   // }
-  async validate(payload: LoginPayload) {
-    const user = await this.authService.validateUser(payload);
+  async validate(payload: any) {
+    console.log("Current User",payload)
+    const user = await this.userService.get(payload.id);
     if (!user) {
-      throw new UnauthorizedException();
+      throw new NotFoundException();
     }
     return user;
   }
