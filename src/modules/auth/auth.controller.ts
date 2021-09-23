@@ -38,3 +38,7 @@ export class AuthController {
     return await this.authService.generateToken(user);
   }
 }
+
+//for pagination 
+//inject this to controller parameter @Query() pagination: PaginationRequest
+//for swagger annotate controller with  @ApiQuery({name:'page',required:true,type: Number})  @ApiQuery({name:'limit',required:true,type: Number})
