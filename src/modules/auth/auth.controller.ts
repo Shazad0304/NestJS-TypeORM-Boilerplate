@@ -17,6 +17,7 @@ export class AuthController {
 
   @Post('login')
   //@UseGuards(AuthGuard('jwt'))
+  // @UseGuards(AuthGuard('jwt'),new RolesGuard("user"))
   @ApiResponse({ status: HttpStatus.ACCEPTED, description: 'Successful Login' })
   @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Bad Request' })
   @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
