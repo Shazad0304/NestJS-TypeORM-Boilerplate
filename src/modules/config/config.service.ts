@@ -37,6 +37,11 @@ export class ConfigService {
         ])
         .required(),
       PORT: Joi.number(),
+      FCM_ACCESS_KEY: Joi.string(),
+      SMTP_HOST: Joi.string(),
+      SMTP_PASS: Joi.string(),
+      SMTP_USER: Joi.string(),
+      SMTP_EMAIL : Joi.string()
       // API_AUTH_ENABLED: Joi.boolean()
       //   .required()
       //   .default(true),
@@ -116,5 +121,25 @@ export class ConfigService {
 
   public get googleauthRedirectUri() {
     return this.envConfig.GOOGLEAUTH_REDIRECT_URI;
+  }
+
+  public get FCMACCESSKEY() {
+    return this.envConfig.FCM_ACCESS_KEY;
+  }
+
+  public get SMTPHOST() {
+    return this.envConfig.SMTP_HOST;
+  }
+
+  public get SMTPPASS() {
+    return this.envConfig.SMTP_PASS;
+  }
+
+  public get SMTPUSER() {
+    return this.envConfig.SMTP_USER;
+  }
+
+  public get SMTPEMAIL(){
+    return this.envConfig.SMTP_EMAIL
   }
 }

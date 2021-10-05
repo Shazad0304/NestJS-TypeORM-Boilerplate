@@ -8,12 +8,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from '../auth/auth.module';
 import { User } from '../user/user.entity';
+import { FCMModule } from 'modules/fcm/fcm.module';
+import { MailModule } from 'modules/mailer/mailer.module';
 
 @Module({
   imports: [
     AuthModule,
     ConfigModule,
     DatabaseModule,
+    FCMModule,
+    MailModule,
     TypeOrmModule.forFeature([User]),
   ],
   controllers: [AppController],
