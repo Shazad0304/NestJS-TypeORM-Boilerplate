@@ -19,6 +19,7 @@ async function bootstrap() {
   setupSwagger(app);
 
   app.useGlobalPipes(new ValidationPipe());
+   app.useGlobalFilters(new HttpExceptionFilter());
   app.use(helmet());
   app.use(loggerMiddleware);
 
