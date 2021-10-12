@@ -20,7 +20,7 @@ export class ImageUploadService {
           console.log(error);
           return res.status(404).json(`Failed to upload image file: ${error}`);
         }
-        return res.status(201).json(req.files[0].location);
+        return res.status(201).json({ url : req.files[0].location});
       });
     } catch (error) {
       console.log(error);
