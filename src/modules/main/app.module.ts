@@ -10,6 +10,7 @@ import { AuthModule } from '../auth/auth.module';
 import { User } from '../user/user.entity';
 import { FCMModule } from 'modules/fcm/fcm.module';
 import { MailModule } from 'modules/mailer/mailer.module';
+import { ImageUploadModule } from 'modules/s3/imageupload.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { MailModule } from 'modules/mailer/mailer.module';
     DatabaseModule,
     FCMModule,
     MailModule,
+    ImageUploadModule,
     TypeOrmModule.forFeature([User]),
   ],
   controllers: [AppController],
