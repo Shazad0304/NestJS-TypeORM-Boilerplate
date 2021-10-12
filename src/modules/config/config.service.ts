@@ -41,7 +41,10 @@ export class ConfigService {
       SMTP_HOST: Joi.string(),
       SMTP_PASS: Joi.string(),
       SMTP_USER: Joi.string(),
-      SMTP_EMAIL : Joi.string()
+      SMTP_EMAIL : Joi.string(),
+      AWS_ACCESS: Joi.string(),
+      AWS_SECRET: Joi.string(),
+      AWS_BUCKET: Joi.string(),
       // API_AUTH_ENABLED: Joi.boolean()
       //   .required()
       //   .default(true),
@@ -141,5 +144,18 @@ export class ConfigService {
 
   public get SMTPEMAIL(){
     return this.envConfig.SMTP_EMAIL
+  }
+
+  
+  public get AWSACCESS() {
+    return this.envConfig.AWS_ACCESS;
+  }
+
+  public get AWSSECRET() {
+    return this.envConfig.AWS_SECRET;
+  }
+
+  public get AWSBUCKET() {
+    return this.envConfig.AWS_BUCKET;
   }
 }
