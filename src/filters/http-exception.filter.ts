@@ -25,12 +25,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
           }
     }
     else{
-        customResponse = {
-            statusCode: status,
-            timestamp: new Date().toISOString(),
-            message: "SERVER_ERROR",
-            stack: exception.stack ? exception.stack : exception
-          }
+      customResponse = {
+        statusCode: status,
+        timestamp: new Date().toISOString(),
+        message: exceptionResponse?.message ? exceptionResponse.message : 'SERVER_ERROR',
+        stack: exception.stack ? exception.stack : exception,
+      };
     }
    
     response
